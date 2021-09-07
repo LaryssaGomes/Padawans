@@ -9,9 +9,9 @@ const Menu = () => {
   return (
     <nav id="navbar" className={itemsChange ? "change" : "no-change"}>
       <div id="menu-bar" onClick={menuOnClick}>
-        <div id="bar1" className="bar"></div>
-        <div id="bar2" className="bar"></div>
-        <div id="bar3" className="bar"></div>
+        <div className="bar"></div>
+        <div className="bar"></div>
+        <div className="bar"></div>
       </div>
       <div>
         <ul className="navbar-links">

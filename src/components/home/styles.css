@@ -2,5 +2,13 @@ img {
   border-radius: 50%;
 }
 .home-main {
-  margin-top: 4rem;
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 768px) {
+  .home-main {
+    margin-left: 35px;
+    margin-right: 35px;
+  }
 }
