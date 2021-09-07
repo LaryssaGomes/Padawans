@@ -3,14 +3,15 @@ import Pagination from "components/pagination";
 import { DateAlbumPage } from "types/date";
 import axios from "axios";
 import { BASE_URL } from "utils/requests";
+import "styles/dataTable.css";
 
 function TodosTable() {
   const [infoPage, setInfoPage] = useState({
     first: true,
     last: false,
     number: 0,
-    totalElement: 100,
-    totalPages: 10,
+    totalElement: 200,
+    totalPages: 20,
   });
 
   const [numberPage, setNumberPagember] = useState(0);
@@ -36,7 +37,7 @@ function TodosTable() {
     if (index === 0) {
       first = true;
       last = false;
-    } else if (index < infoPage.totalPages - 1) {
+    } else if (index < 19) {
       first = false;
       last = false;
     } else {
@@ -53,15 +54,17 @@ function TodosTable() {
     });
   };
   const changePage = (index: number) => {
-    setNumberPagember(index);
+    setNumberPagember(index * 10);
     verificar(index);
   };
 
   return (
-    <>
-      <Pagination page={infoPage} onPageChange={changePage} />
+    <div className="table-container">
+      <div className="title-page">
+        <p>Todos</p>
+      </div>
       <div className="table-responsive">
-        <table className="table table-striped table-sm">
+        <table className="table">
           <thead>
             <tr>
               <th>Id</th>
@@ -78,7 +81,10 @@ function TodosTable() {
           </tbody>
         </table>
       </div>
-    </>
+      <div>
+        <Pagination page={infoPage} onPageChange={changePage} />
+      </div>
+    </div>
   );
 }
 export default TodosTable;

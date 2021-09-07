@@ -1,0 +1,8 @@
+* {
+  overflow-x: hidden;
+}
+.table-container {
+  margin-top: 4rem;
+  margin-left: 20px;
+  margin-right: 20px;
+}

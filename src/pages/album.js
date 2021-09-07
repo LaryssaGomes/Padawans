@@ -3,7 +3,6 @@ import DataTable from "components/albums";
 
 const Albums = () => (
   <>
-    <h1>Albums</h1>
     <DataTable />
   </>
 );

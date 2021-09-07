@@ -3,7 +3,7 @@ import Pagination from "components/pagination";
 import { DateAlbumPage } from "types/date";
 import axios from "axios";
 import { BASE_URL } from "utils/requests";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "styles/dataTable.css";
 
 function DataTable() {
   const [infoPage, setInfoPage] = useState({
@@ -55,30 +55,37 @@ function DataTable() {
   };
 
   const changePage = (index: number) => {
-    setNumberPagember(index);
+    setNumberPagember(index * 10);
     verificar(index);
   };
 
   return (
-    <>
-      <Pagination page={infoPage} onPageChange={changePage} />
+    <div className="table-container">
+      <div className="title-page">
+        <p>Albums</p>
+      </div>
       <div className="table-responsive">
-        <table className="table table-striped table-sm">
+        <table className="table">
           <thead>
             <tr>
-              <th>Titulo</th>
+              <th>Id</th>
+              <th>Título</th>
             </tr>
           </thead>
           <tbody>
             {page.content?.map((item) => (
               <tr key={item.id}>
+                <td className="id">{item.id}</td>
                 <td>{item.title}</td>
               </tr>
             ))}
           </tbody>
         </table>
+        <div>
+          <Pagination page={infoPage} onPageChange={changePage} />
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 export default DataTable;

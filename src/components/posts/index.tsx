@@ -3,6 +3,7 @@ import Pagination from "components/pagination";
 import { DatePostPage } from "types/date";
 import axios from "axios";
 import { BASE_URL } from "utils/requests";
+import "styles/dataTable.css";
 
 function PostTable() {
   const [infoPage, setInfoPage] = useState({
@@ -29,6 +30,7 @@ function PostTable() {
         });
       });
   }, [numberPage]);
+
   const verificar = (index: number) => {
     let first = true;
     let last = false;
@@ -51,25 +53,30 @@ function PostTable() {
       totalPages: 10,
     });
   };
+
   const changePage = (index: number) => {
-    setNumberPagember(index);
+    setNumberPagember(index * 10);
     verificar(index);
   };
 
   return (
-    <>
-      <Pagination page={infoPage} onPageChange={changePage} />
+    <div className="table-container">
+      <div className="title-page">
+        <p>Postagens</p>
+      </div>
       <div className="table-responsive">
-        <table className="table table-striped table-sm">
+        <table className="table">
           <thead>
             <tr>
-              <th>Titulo</th>
+              <th>Id</th>
+              <th>Título</th>
               <th>Mensagem</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="table-content">
             {page.content?.map((item) => (
               <tr key={item.id}>
+                <td id="item">{item.id}</td>
                 <td>{item.title}</td>
                 <td>{item.body}</td>
               </tr>
@@ -77,7 +84,10 @@ function PostTable() {
           </tbody>
         </table>
       </div>
-    </>
+      <div>
+        <Pagination page={infoPage} onPageChange={changePage} />
+      </div>
+    </div>
   );
 }
 export default PostTable;
