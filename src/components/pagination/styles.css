@@ -1,0 +1,8 @@
+.btn-color {
+  background-color: #482172 !important;
+  color: #fff !important;
+}
+.disabled .btn-color {
+  background-color: #433750 !important;
+  color: rgb(209, 207, 207) !important;
+}

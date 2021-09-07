@@ -1,4 +1,5 @@
 import { DateInfoPage } from "types/date";
+import "./styles.css";
 
 type Props = {
   page: DateInfoPage;
@@ -12,18 +13,18 @@ const Pagination = ({ page, onPageChange }: Props) => {
         <ul className="pagination">
           <li className={`page-item ${page.first ? "disabled" : ""}`}>
             <button
-              className="page-link"
+              className="page-link btn-color"
               onClick={() => onPageChange(page.number - 1)}
             >
               Anterior
             </button>
           </li>
           <li className="page-item ">
-            <span className="page-link">{page.number + 1}</span>
+            <span className="page-link btn-color">{page.number + 1}</span>
           </li>
           <li className={`page-item ${page.last ? "disabled" : ""}`}>
             <button
-              className="page-link"
+              className="page-link btn-color"
               onClick={() => onPageChange(page.number + 1)}
             >
               Próxima
